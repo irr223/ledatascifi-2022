@@ -47,12 +47,11 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -841,25 +840,25 @@
 <h2><span class="section-number">1.1.1. </span>Or: Should I take this class (A: YES!)<a class="headerlink" href="#or-should-i-take-this-class-a-yes" title="Permalink to this headline">¶</a></h2>
 <p>Employers are starving for talented students that can analyze large datasets, and they are willing to pay for it:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="829aa5d2-9b70-4b24-8e81-b2f866fec05f" name="01fb3e06-b1b2-4df2-a96e-122c288a97d9" type="radio">
-</input><label class="tabbed-label" for="829aa5d2-9b70-4b24-8e81-b2f866fec05f">
+<input checked="checked" id="9def6a99-a731-4429-8a77-9deeda20e538" name="3bf9662a-5985-4183-9d76-f994ac55af04" type="radio">
+</input><label class="tabbed-label" for="9def6a99-a731-4429-8a77-9deeda20e538">
 Lehigh pay</label><div class="tabbed-content docutils">
 <a class="reference internal image-reference" href="../../_images/lehigh.png"><img alt="lingotrend" class="align-center" src="../../_images/lehigh.png" style="width: 600px;" /></a>
 </div>
-<input id="b5b87bff-666c-4996-9574-2efb9ffd9468" name="01fb3e06-b1b2-4df2-a96e-122c288a97d9" type="radio">
-</input><label class="tabbed-label" for="b5b87bff-666c-4996-9574-2efb9ffd9468">
+<input id="107af4ae-a701-43dd-a2c1-cc8f260a3839" name="3bf9662a-5985-4183-9d76-f994ac55af04" type="radio">
+</input><label class="tabbed-label" for="107af4ae-a701-43dd-a2c1-cc8f260a3839">
 Jobs and pay by language</label><div class="tabbed-content docutils">
 <p>Python is #2 among languages in terms of high salary jobs:</p>
 <a class="reference internal image-reference" href="../../_images/indeed.png"><img alt="indeeed" class="align-center" src="../../_images/indeed.png" style="width: 600px;" /></a>
 </div>
-<input id="bcf60690-d459-4f04-9356-a159147f512a" name="01fb3e06-b1b2-4df2-a96e-122c288a97d9" type="radio">
-</input><label class="tabbed-label" for="bcf60690-d459-4f04-9356-a159147f512a">
+<input id="bf2dc3db-531b-4723-9b00-2ecdf537a0c9" name="3bf9662a-5985-4183-9d76-f994ac55af04" type="radio">
+</input><label class="tabbed-label" for="bf2dc3db-531b-4723-9b00-2ecdf537a0c9">
 DS Jobs</label><div class="tabbed-content docutils">
 <p>Within “data science” itself (a broader category than finance jobs with data science), python has the most jobs:</p>
 <a class="reference internal image-reference" href="../../_images/jobs-by-lang.png"><img alt="jobs" class="align-center" src="../../_images/jobs-by-lang.png" style="width: 600px;" /></a>
 </div>
-<input id="ac50bde5-bec6-433d-9d1c-8f6354e7f849" name="01fb3e06-b1b2-4df2-a96e-122c288a97d9" type="radio">
-</input><label class="tabbed-label" for="ac50bde5-bec6-433d-9d1c-8f6354e7f849">
+<input id="4cbb89f4-5bfb-4786-be23-191dd242d2a1" name="3bf9662a-5985-4183-9d76-f994ac55af04" type="radio">
+</input><label class="tabbed-label" for="4cbb89f4-5bfb-4786-be23-191dd242d2a1">
 Stackoverflow</label><div class="tabbed-content docutils">
 <p>Among the common alternative data science languages, python is the most popular on SO:</p>
 <a class="reference internal image-reference" href="../../_images/stackoverflowstrends.svg"><img alt="lingotrend" class="align-center" src="../../_images/stackoverflowstrends.svg" width="600px" /></a>

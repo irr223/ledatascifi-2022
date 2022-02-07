@@ -47,12 +47,11 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -869,8 +868,8 @@
 <div class="section" id="examples">
 <h2><span class="section-number">1.5.4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="tabbed-set docutils">
-<input checked="checked" id="9f41bdc3-7228-4630-a7a2-993ec7285518" name="e21039a6-de8d-4dab-811b-d8a102299fa9" type="radio">
-</input><label class="tabbed-label" for="9f41bdc3-7228-4630-a7a2-993ec7285518">
+<input checked="checked" id="2883914f-3021-4c2b-8ea5-04b5555724e5" name="a3459373-52dc-42ea-a4b4-d4f234b22425" type="radio">
+</input><label class="tabbed-label" for="2883914f-3021-4c2b-8ea5-04b5555724e5">
 What I type</label><div class="tabbed-content docutils">
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>### How to make sections, subsections, etc
 
@@ -911,8 +910,8 @@ Here is an example:
 </pre></div>
 </div>
 </div>
-<input id="32ba108d-f613-4ebe-9d96-a07aafc18b9a" name="e21039a6-de8d-4dab-811b-d8a102299fa9" type="radio">
-</input><label class="tabbed-label" for="32ba108d-f613-4ebe-9d96-a07aafc18b9a">
+<input id="7b91fc77-0e99-4284-b04e-390ee33d3a8f" name="a3459373-52dc-42ea-a4b4-d4f234b22425" type="radio">
+</input><label class="tabbed-label" for="7b91fc77-0e99-4284-b04e-390ee33d3a8f">
 What you see</label><div class="tabbed-content docutils">
 <h3> How to make sections, subsections, etc </h3>
 <p>One “#” at the start of a line makes a “title header”. Two “##” means a section header, three a subsection, and so on.</p>
