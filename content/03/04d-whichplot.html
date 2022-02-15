@@ -1026,8 +1026,17 @@ Examining two variables by group<div class="summary-down docutils">
 
 <span class="c1"># note: .set(title) doesn&#39;t work here - it tries to title the individual subfigures (axes)</span>
 <span class="c1">#       to title the whole thing, I had to use suptitle. </span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04d-whichplot_7_0.png" src="../../_images/04d-whichplot_7_0.png" />
+</div>
+</div>
+<p>This is the same, plus a <code class="docutils literal notranslate"><span class="pre">hue=&quot;species&quot;</span></code> parameter in the graph function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Faceting by overlaying figures by group&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> <span class="c1"># Reduce plot to make room for the title </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1035,8 +1044,7 @@ Examining two variables by group<div class="summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04d-whichplot_7_0.png" src="../../_images/04d-whichplot_7_0.png" />
-<img alt="../../_images/04d-whichplot_7_1.png" src="../../_images/04d-whichplot_7_1.png" />
+<img alt="../../_images/04d-whichplot_9_0.png" src="../../_images/04d-whichplot_9_0.png" />
 </div>
 </div>
 <p>Boxplot by group: Just use the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments together.</p>
@@ -1048,7 +1056,7 @@ Examining two variables by group<div class="summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04d-whichplot_9_0.png" src="../../_images/04d-whichplot_9_0.png" />
+<img alt="../../_images/04d-whichplot_11_0.png" src="../../_images/04d-whichplot_11_0.png" />
 </div>
 </div>
 <p>An example of faceting via the <code class="docutils literal notranslate"><span class="pre">col</span></code> argument. Using <code class="docutils literal notranslate"><span class="pre">row</span></code> instead does what you’d think. Protip: You can use <code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">col</span></code> together to make a grid of groups.</p>
@@ -1056,18 +1064,33 @@ Examining two variables by group<div class="summary-down docutils">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04d-whichplot_13_0.png" src="../../_images/04d-whichplot_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">row</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04d-whichplot_11_0.png" src="../../_images/04d-whichplot_11_0.png" />
-<img alt="../../_images/04d-whichplot_11_1.png" src="../../_images/04d-whichplot_11_1.png" />
-<img alt="../../_images/04d-whichplot_11_2.png" src="../../_images/04d-whichplot_11_2.png" />
+<img alt="../../_images/04d-whichplot_14_0.png" src="../../_images/04d-whichplot_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04d-whichplot_15_0.png" src="../../_images/04d-whichplot_15_0.png" />
 </div>
 </div>
 <div class="section" id="i-want-to-facet-my-figure-but">
