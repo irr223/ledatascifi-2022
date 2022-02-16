@@ -811,6 +811,11 @@ const thebe_selector_output = ".output, .cell_output"
    Sidebar: Here’s a fun EDA hack:
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -943,25 +948,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>Focus on the change in the <em>level</em> (raw difference, not percent change) of unemployment from one year compared the prior year.</p>
-<ul class="simple">
-<li><p>Q1. How has unemployment changes has evolved over time for all three states?</p></li>
-<li><p>Q2. What is the distribution of unemployment changes for all states (view as one var)?</p>
-<ul>
-<li><p>hist, hist options (?), kde</p></li>
-</ul>
-</li>
-<li><p>Q3. What is the distribution of unemployment changes for all states (separately)?</p>
-<ul>
-<li><p>hist, kde, box</p></li>
-</ul>
-</li>
-<li><p>Q4. How does unemployment changes vary with median income <strong>growth</strong>?</p>
-<ul>
-<li><p>best fit line</p></li>
-</ul>
-</li>
-</ul>
+<p><em>Weird technical note: When I import ProfileReport, I have to run <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> again after it.</em></p>
+<p><a class="reference external" href="https://github.com/pandas-profiling/pandas-profiling/pull/893"><em>This is a known issue with ProfileReport, perhaps an update to it later will fix it.</em></a> <em>For now, we have to do a workaround ang either not import ProfileReport, or import it and then run <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> again.</em></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>From the <code class="docutils literal notranslate"><span class="pre">year_state</span></code> data (wide or tall):</p>
 <p><em>(“unemployment changes”: Focus on the change in the <em>level</em> (raw difference, not percent change) of unemployment from one year compared the prior year.)</em></p>
 <ul class="simple">
