@@ -1455,7 +1455,8 @@ Name: _merge, dtype: int64
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If I see assignments with a line like <code class="docutils literal notranslate"><span class="pre">merged=pd.merge()</span></code> (missing <code class="docutils literal notranslate"><span class="pre">how</span></code>, <code class="docutils literal notranslate"><span class="pre">on</span></code>, <code class="docutils literal notranslate"><span class="pre">indicator</span></code>, and <code class="docutils literal notranslate"><span class="pre">validate</span></code>), I’ll mark that down automatically.</p>
+<p>If I see assignments with a line like <code class="docutils literal notranslate"><span class="pre">merged=pd.merge(...)</span></code> I’ll mark that down automatically. (You name it <code class="docutils literal notranslate"><span class="pre">merged</span></code>!)</p>
+<p>If I see assignments with a line like <code class="docutils literal notranslate"><span class="pre">merged=pd.merge(df1,df2)</span></code> or <code class="docutils literal notranslate"><span class="pre">merged</span> <span class="pre">=</span> <span class="pre">df1.merge(df2)</span></code>, I’ll mark that down automatically. (You didn’t declare the merge function parameters!)</p>
 </div>
 </div>
 <div class="section" id="a-nice-overview">
