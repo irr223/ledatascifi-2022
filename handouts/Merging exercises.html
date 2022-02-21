@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plotting &#8212; LeDataSciFi-2022</title>
+    <title>The merge function &#8212; LeDataSciFi-2022</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -726,7 +726,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/handouts/Plotting exercises.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/handouts/Merging exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -746,10 +746,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/LeDataSciFi/ledatascifi-2022/issues/new?title=Issue%20on%20page%20%2Fhandouts/Plotting exercises.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/LeDataSciFi/ledatascifi-2022/issues/new?title=Issue%20on%20page%20%2Fhandouts/Merging exercises.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2022/edit/main/handouts/Plotting exercises.ipynb"><button
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2022/edit/main/handouts/Merging exercises.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -769,7 +769,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2022/main?urlpath=lab/tree/handouts/Plotting exercises.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2022/main?urlpath=lab/tree/handouts/Merging exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -777,7 +777,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2022/blob/main/handouts/Plotting exercises.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2022/blob/main/handouts/Merging exercises.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -797,18 +797,18 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-macro-data">
-   Load macro_data
+  <a class="reference internal nav-link" href="#part-1">
+   Part 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#and-load-ccm-data">
-   And load CCM data
+  <a class="reference internal nav-link" href="#part-2">
+   Part 2
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sidebar-here-s-a-fun-eda-hack">
-   Sidebar: Here’s a fun EDA hack:
+  <a class="reference internal nav-link" href="#part-3-collecting-tips">
+   Part 3 - Collecting tips
   </a>
  </li>
 </ul>
@@ -822,169 +822,107 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <div class="section" id="plotting">
-<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
-<p>We will plot with 3 datasets this week. Let’s load them.</p>
+  <div class="section" id="the-merge-function">
+<h1>The merge function<a class="headerlink" href="#the-merge-function" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  <span class="c1"># IF NECESSARY, from terminal: pip install pandas_datareader</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<span class="n">left_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accenture&#39;</span><span class="p">,</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">]})</span>
 
-<span class="c1"># these three are used to open the CCM dataset:</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># display option for pandas</span>
-<span class="c1"># more here: https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html</span>
+<span class="n">right_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;Chase&#39;</span><span class="p">,</span><span class="s1">&#39;WF&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="load-macro-data">
-<h2>Load macro_data<a class="headerlink" href="#load-macro-data" title="Permalink to this headline">¶</a></h2>
+<p>Let use shift+tab to talk about the parameters.</p>
+<p>Put your cursor in the merge function below and hit shift tab</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOAD DATA AND CONVERT TO ANNUAL</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="mi">1990</span> <span class="c1"># pandas datareader can infer these are years</span>
-<span class="n">end</span> <span class="o">=</span> <span class="mi">2018</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;CAUR&#39;</span><span class="p">,</span><span class="s1">&#39;MIUR&#39;</span><span class="p">,</span><span class="s1">&#39;PAUR&#39;</span><span class="p">,</span> <span class="c1"># unemployment </span>
-                                  <span class="s1">&#39;LXXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;DEXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;WDXRSA&#39;</span><span class="p">,</span> <span class="c1"># case shiller index in LA, Detroit, DC (no PA  available!)</span>
-                                  <span class="s1">&#39;MEHOINUSCAA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSMIA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSPAA672N&#39;</span><span class="p">],</span> <span class="c1">#  </span>
-                                 <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="c1"># get&#39;s the first observation for each variable in a given year</span>
-
-<span class="c1"># CLEAN UP THE FORMATING SOMEWHAT</span>
-
-<span class="n">macro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
-<span class="n">macro_data</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">)</span>
-    <span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_state_tall</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_1&#39;</span><span class="p">:</span><span class="s1">&#39;state&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="s1">&#39;DATE&#39;</span><span class="p">])</span>    
-
-<span class="n">year_state_wide</span> <span class="o">=</span> <span class="n">macro_data</span>
-<span class="c1"># one level names</span>
-<span class="n">year_state_wide</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">&#39;Unemployment_CA&#39;</span><span class="p">,</span><span class="s1">&#39;Unemployment_MI&#39;</span><span class="p">,</span><span class="s1">&#39;Unemployment_PA&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;HouseIdx_CA&#39;</span><span class="p">,</span><span class="s1">&#39;HouseIdx_MI&#39;</span><span class="p">,</span><span class="s1">&#39;HouseIdx_PA&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;MedIncome_CA&#39;</span><span class="p">,</span><span class="s1">&#39;MedIncome_MI&#39;</span><span class="p">,</span><span class="s1">&#39;MedIncome_PA&#39;</span>
-    <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="and-load-ccm-data">
-<h2>And load CCM data<a class="headerlink" href="#and-load-ccm-data" title="Permalink to this headline">¶</a></h2>
-<p>First, load the data</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/ledatascifi-2022/blob/main/data/CCM_cleaned_for_class.zip?raw=true&#39;</span>
-
-<span class="c1">#firms = pd.read_stata(url)   </span>
-<span class="c1"># &lt;-- that code would work, but GH said it was too big and</span>
-<span class="c1"># forced me to zip it, so here is the work around to download it:</span>
-
-<span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">request</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">archive</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">stata</span><span class="p">:</span>
-        <span class="n">ccm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">stata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="sidebar-here-s-a-fun-eda-hack">
-<h2>Sidebar: Here’s a fun EDA hack:<a class="headerlink" href="#sidebar-here-s-a-fun-eda-hack" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/pandas-profiling/pandas-profiling#examples">https://github.com/pandas-profiling/pandas-profiling#examples</a></p>
-<p>Notes</p>
+<p>The main parameters:</p>
 <ul class="simple">
-<li><p>Slow with huge datasets</p></li>
-<li><p>Doesn’t wrk with multiindex column names (must be “one level”)</p></li>
+<li><p>right</p></li>
+<li><p>how</p></li>
+<li><p>on and its variants</p></li>
+<li><p>indicator</p></li>
+<li><p>validate</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install new package (run this one time only)</span>
-<span class="c1"># !pip install pandas-profiling[notebook]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
-
-<span class="c1"># create the report:</span>
-<span class="c1"># profile = ProfileReport(macro_data, title=&quot;Pandas Profiling Report&quot;)</span>
-<span class="c1"># profile</span>
-
-<span class="c1">### THIS WON&#39;T RUN ON macro_data yet:</span>
-<span class="c1">### NEED TO ADJUST THIS DATASET TO RUN A PROFILE</span>
-<span class="c1">### COLUMN NAMES NEED TO BE SINGLE LEVEL STRINGS (NOT MULTIINDEX COL NAMES)</span>
-<span class="c1">### OR CONVERT TO TALL SHAPE</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>From the <code class="docutils literal notranslate"><span class="pre">year_state</span></code> data (wide or tall):</p>
+<div class="section" id="part-1">
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
+<p><em>Prof: Leave the “how” slide on the board</em></p>
+<p>Some work with the mechanics:</p>
 <ul class="simple">
-<li><p>Q0. How has median income has evolved over time for PA?</p>
-<ul>
-<li><p>920am: Wasti and Lana</p></li>
-<li><p>1045am: Jake and Cole</p></li>
-</ul>
-</li>
-<li><p>Q1. How has unemployment changes has evolved over time for PA?</p></li>
-<li><p>Q2. How has unemployment changes  has evolved over time for all states (view as one var)?</p></li>
-<li><p>Q3. How has unemployment changes  has evolved over time for all states (separately)</p></li>
-<li><p>Q4. How does unemployment changes vary with median income growth?</p></li>
-</ul>
-<p>From the <code class="docutils literal notranslate"><span class="pre">ccm</span></code> data:</p>
-<ul class="simple">
-<li><p>Q5. Plot the distribution of R&amp;D (<code class="docutils literal notranslate"><span class="pre">xrd_a</span></code>). Bonuses:</p>
-<ul>
-<li><p>deal with outliers</p></li>
-<li><p>add a title</p></li>
-<li><p>change the x and y axis titles</p></li>
-</ul>
-</li>
-<li><p>Q6: Compare R&amp;D and CAPX. Bonuses:</p>
-<ul>
-<li><p>don’t plot outliers</p></li>
-<li><p>avoid oversaturated plot</p></li>
-</ul>
-</li>
+<li><p>Q0 Merge both datasets above with each possible value of <code class="docutils literal notranslate"><span class="pre">how</span></code>. How many observations result from each of the four merges?</p></li>
+<li><p>Q1 Compare <code class="docutils literal notranslate"><span class="pre">left_df.merge(right_df)</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.merge(left_df,</span> <span class="pre">right_df)</span></code>. Are they the same or different? What do we learn from this?</p></li>
+<li><p>Q2 Successfully do an outer merge between <code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">ChosenOne</span></code>. Then try to do an outer merge between <code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">CurryForThree</span></code> (both are defined below)</p></li>
+<li><p>Q3 Do an outer merge with <code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">right_df</span></code> and output the source of each observation by using the “indicate” option.</p></li>
+<li><p>Q4 Repeat the outer merge we just did, but four times: try each possible value of “validate”</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ccm[&#39;xrd_a&#39;].describe()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ChosenOne</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;tic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
 
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">ccm</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;xrd_a &lt; .5 &amp; xrd_a &gt; 0&#39;</span><span class="p">)[</span><span class="s1">&#39;xrd_a&#39;</span><span class="p">],</span>  <span class="c1"># reduced the data to make plot more visible</span>
-             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="c1"># plt.title(&#39;R&amp;D Ratio Vs. Frequency&#39;, fontsize=18)</span>
-<span class="c1"># plt.xlabel(&#39;R&amp;D Ratio&#39;, fontsize =14)</span>
-<span class="c1"># plt.ylabel(&#39;Frequency&#39;, fontsize = 14)</span>
+<span class="n">CurryForThree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="s1">&#39;D3&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E1&#39;</span><span class="p">,</span> <span class="s1">&#39;E2&#39;</span><span class="p">,</span> <span class="s1">&#39;E3&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;var1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="part-2">
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Q5: <a class="reference external" href="https://ledatascifi.github.io/ledatascifi-2022/content/03/05b_merging.html#categories-of-joins">Guess what category of join</a> each of the following merges are?</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">right_df</span></code> (you already know from Q4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">ChosenOne</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CurryForThree</span></code> and <code class="docutils literal notranslate"><span class="pre">left_df</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChosenOne</span></code> and <code class="docutils literal notranslate"><span class="pre">CurryForThree</span></code></p></li>
+</ol>
+</li>
+<li><p>Q6: Do each of those four merge with <code class="docutils literal notranslate"><span class="pre">how='inner'</span></code> as an option. What is the length of each resulting dataframe?</p></li>
+<li><p>Q7: Do an outer merge of <code class="docutils literal notranslate"><span class="pre">left_df</span></code> and <code class="docutils literal notranslate"><span class="pre">ChosenOne</span></code>. How many observations are in the resulting data, and why is it different than we foudn in Q6?</p></li>
+<li><p>Q8: Merge these next two datasets with <code class="docutils literal notranslate"><span class="pre">how='inner'</span></code> as an option. What s the length of the resulting dataframe and do you think it’s right?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poppop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;tic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;GM&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
+
+<span class="n">CurryForThree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E1&#39;</span><span class="p">,</span> <span class="s1">&#39;E2&#39;</span><span class="p">,</span> <span class="s1">&#39;E3&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;var1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-collecting-tips">
+<h2>Part 3 - Collecting tips<a class="headerlink" href="#part-3-collecting-tips" title="Permalink to this headline">¶</a></h2>
+<p>You should, after class, collect tips about</p>
+<ul class="simple">
+<li><p>The most common use of merging and safeguards you can use</p></li>
+<li><p>When should you create variables - before or after a merge?</p></li>
+<li><p>Best practices for merging</p></li>
+</ul>
 </div>
 </div>
 
