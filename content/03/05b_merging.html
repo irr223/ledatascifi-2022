@@ -1395,10 +1395,12 @@ Name: _merge, dtype: int64
 </div>
 </div>
 <p>So that is the correct standard deviation.</p>
-<p>If you use this as the right dataframe in a M:1 merge with an industry-day dataset as the left, our right df will show up in the post-merge dataset many times: Each 1 of the right is matched to the left M times.</p>
+<p>If you use this as the right dataframe in a M:1 merge with an industry-day dataset as the left, then what happens is that our right df will be duplicated in the post-merge dataset many times: Each 1 of the right dataframe is matched to the left M times. And this leads to an error in the calculation!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">after_merge</span> <span class="o">=</span> <span class="n">right</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these lines of code stack the right df 6 times, as would happen </span>
+<span class="c1"># if the left df had 6 days for each industry </span>
+<span class="n">after_merge</span> <span class="o">=</span> <span class="n">right</span>
 <span class="n">after_merge</span> <span class="o">=</span> <span class="n">after_merge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;STD if you calculate it after the merge:&quot;</span><span class="p">,</span><span class="n">after_merge</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
