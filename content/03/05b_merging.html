@@ -845,22 +845,20 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#merging-in-new-variables-to-your-analysis">
    3.4.1.5. Merging in new variables to your analysis
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-variables-around-a-merge">
-     3.4.1.5.1. Creating variables around a merge
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-your-variables-before-a-merge-when-possible">
+   3.4.1.6. Create your variables before a merge when possible
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tips-and-best-practices">
-   3.4.1.6. Tips and best practices
+   3.4.1.7. Tips and best practices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-nice-overview">
-   3.4.1.7. A nice overview
+   3.4.1.8. A nice overview
   </a>
  </li>
 </ul>
@@ -1302,9 +1300,10 @@ Name: _merge, dtype: int64
 <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="creating-variables-around-a-merge">
-<h3><span class="section-number">3.4.1.5.1. </span>Creating variables around a merge<a class="headerlink" href="#creating-variables-around-a-merge" title="Permalink to this headline">¶</a></h3>
-<p>Suppose you want to merge in a new variable. The variable is a function of a variable in another dataset. Should we create the variable before the merge or after the merge?</p>
+</div>
+<div class="section" id="create-your-variables-before-a-merge-when-possible">
+<h2><span class="section-number">3.4.1.6. </span>Create your variables before a merge when possible<a class="headerlink" href="#create-your-variables-before-a-merge-when-possible" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you want to merge in a new variable to your analysis data. The variable is a function of a variable in another dataset. Should we create the variable before the merge or after the merge?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># before </span>
 <span class="n">newVar</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
 <span class="n">left</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">newVar</span><span class="p">)</span>
@@ -1320,8 +1319,12 @@ Name: _merge, dtype: int64
 <p><a class="reference internal" href="../02/10_Golden_3.html"><span class="doc std std-doc">Golden Rule 4.B from the Good Analysis Practices chapter</span></a> is “Keep data normalized as far into your code pipeline as you can.”</p>
 </div>
 <p>One implication of that is to create variables on the “smallest” dataset where you can validly compute the variable. By “smallest”, I mean: the dataset where the units exactly correspond to the statistic you have in mind.</p>
-<p>If you want to calculate the variance of annual industry sales, open an industry-level dataset with annual sales, and take the variance. Do not merge annual sales into a industry-day level dataset (with many days for each industry) and then take the variance.</p>
-<p>Let’s illustrate:</p>
+<p>Example: Suppose you want to calculate the variance of annual industry sales.</p>
+<ul class="simple">
+<li><p>Do this: Open an industry-level dataset with annual sales, and take the variance.</p></li>
+<li><p>Not this: Merge annual sales into a industry-day level dataset (with many days for each industry) and then take the variance.</p></li>
+</ul>
+<p>Let me show you that the latter can give you the wrong answer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -1413,9 +1416,8 @@ Name: _merge, dtype: int64
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="tips-and-best-practices">
-<h2><span class="section-number">3.4.1.6. </span>Tips and best practices<a class="headerlink" href="#tips-and-best-practices" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.1.7. </span>Tips and best practices<a class="headerlink" href="#tips-and-best-practices" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <div class="admonition tip">
@@ -1443,6 +1445,7 @@ Name: _merge, dtype: int64
 <ol class="simple">
 <li><p>This will force you to think about the observation levels in each dataset you’re merging before you try the merge, and whether the merge you’re doing is 1:1, 1:M, M:M, or M:1.</p></li>
 <li><p>Guess how many observations you’ll have (more or less than left? more or less than right or left?) and then check afterwards.</p></li>
+<li></li>
 </ol>
 </li>
 <li><p><strong>After the merge</strong>, check that it did what you expected, and give the resulting dataframe a <em>good</em> name. <strong>Don’t name it “merged”!!!</strong></p>
@@ -1462,7 +1465,7 @@ Name: _merge, dtype: int64
 </div>
 </div>
 <div class="section" id="a-nice-overview">
-<h2><span class="section-number">3.4.1.7. </span>A nice overview<a class="headerlink" href="#a-nice-overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.1.8. </span>A nice overview<a class="headerlink" href="#a-nice-overview" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/03.07-merge-and-join.html">Python Data Science Handbook</a> has a wonderful breakdown of the mechanics of merging. You should read it!</p>
 </div>
 </div>
